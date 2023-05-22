@@ -27,18 +27,18 @@ jobs:
       - run: docker build --tag=public.ecr.aws/o6u7e2l7/identiverse:${GITHUB_REPOSITORY#*/}-$GITHUB_SHA ./source
 
       # Login to AWS
-      #- uses: aws-actions/configure-aws-credentials@v1
-      #  with:
-      #    role-to-assume: ${{ secrets.AWS_ROLE }}
-      #    role-session-name: ${{ secrets.SESSION_NAME }}
-      #    aws-region: us-east-1
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE }}
+          role-session-name: ${{ secrets.SESSION_NAME }}
+          aws-region: us-east-1
 
       # Get docker credentials
-      #- name: Login to Amazon ECR Private
-      #  id: login-ecr
-      #  uses: aws-actions/amazon-ecr-login@v1
-      #  with: 
-      #    registry-type: public
+      - name: Login to Amazon ECR Private
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+        with: 
+          registry-type: public
 
 
       # Push to our registry
