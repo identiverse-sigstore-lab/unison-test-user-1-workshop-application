@@ -47,7 +47,7 @@ jobs:
       # Sign our image using the GitHub OIDC Token
       - name: Sign image with GitHub OIDC
         run: |-
-           cosign sign public.ecr.aws/o6u7e2l7/identiverse:${GITHUB_REPOSITORY#*/}-$GITHUB_SHA
+           cosign sign -y public.ecr.aws/o6u7e2l7/identiverse:${GITHUB_REPOSITORY#*/}-$GITHUB_SHA
 
       # Check out our application's infrastructure repository
       - uses: actions/checkout@v3
